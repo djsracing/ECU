@@ -50,7 +50,7 @@ Steps:
 
 ### Issues Resolved
 1. There were translation issues and the wire is supposed to be yellow-white
-2. We have custom made the connector ourselves by soldering the resistor as well as the connections(ask dhaval)
+2. We have custom made the connector ourselves by soldering the resistor as well as the connections
 3. We set the Imax pk value to 3% during our successfull test and the current drawn was 12.7A(as shown in N-drive software)
 
 ### Circuit Used
