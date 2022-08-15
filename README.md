@@ -8,7 +8,8 @@ ______________
 -4 12V batteries in series connection were used to provide 48V(high voltage) to do the phasing process. 
 -RFE and RUN signal were given to the motorcontroller by attaching external push buttons
 
-![[BamocarConnections.jpg]]
+![BamocarConnections](https://user-images.githubusercontent.com/93036845/184670133-faa320b2-8469-42ef-80a9-63e0c4e41fbf.jpg)
+
 
 Steps:
 1. Check that the switch in branch K4(discharge relay) is closed and has been closed for **at least 15 seconds**, once it has been closed for 15 sec, open the switch 
@@ -43,7 +44,8 @@ Steps:
 3. As mentioned in the initialisation guide the motor is supposed to run during phasing at an Imax pk value of 5% it should draw a current of 2-3A {mentioned in emails by edward} however at 5% it draws 21.2A {as shown in phasing videos} and motor does not run at 5%[Resolved(3)]
 4. The RS232 serial interface requires a connector from M8 to D9-S [Resolved(2)]
 	   
-![[1.jpeg]]
+![1](https://user-images.githubusercontent.com/93036845/184670173-512488b0-ff51-4e91-8855-7a92d070d92c.jpeg)
+
 
 
 ### Issues Resolved
@@ -56,6 +58,7 @@ Steps:
 2. The controlling of the positive AIR which originally is done by a signal from the MASTER PCB(once 90% charging is done of the motor controller capacitor) was replaced by and external push button 
 3. The RS232 connector needs special drivers 
 
+![2](https://user-images.githubusercontent.com/93036845/184670253-423d9065-19a5-474b-823a-5939ba802217.jpeg)
+![3](https://user-images.githubusercontent.com/93036845/184670304-ee1a91f6-4d5c-441c-9631-65b94687c3a1.jpeg)
+![4](https://user-images.githubusercontent.com/93036845/184670330-64361df3-2701-4bed-a409-e050728879a1.jpeg)
 
-![[3.jpeg]] 
-![[4.jpeg]]
