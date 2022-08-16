@@ -44,7 +44,7 @@ Steps:
 3. As mentioned in the initialisation guide the motor is supposed to run during phasing at an Imax pk value of 5% it should draw a current of 2-3A {mentioned in emails by edward} however at 5% it draws 21.2A {as shown in phasing videos} and motor does not run at 5%[Resolved(3)]
 
 	   
-![1](https://user-images.githubusercontent.com/93036845/184670173-512488b0-ff51-4e91-8855-7a92d070d92c.jpeg)
+
 
 
 
@@ -66,3 +66,4 @@ Steps:
 ![2](https://user-images.githubusercontent.com/93036845/184964603-7632e070-55f3-4568-84d5-dfb9c22eda25.jpeg)
 ![4](https://user-images.githubusercontent.com/93036845/184964633-d6e42546-e119-478e-9736-3f625f8b9aa1.jpeg)
 ![EMRAX-RS_V2 Resolver connector _page-0001](https://user-images.githubusercontent.com/93036845/184964892-fb79dc0f-5921-47ef-b917-cb4e5d733b67.jpg)
+![1](https://user-images.githubusercontent.com/93036845/184670173-512488b0-ff51-4e91-8855-7a92d070d92c.jpeg)
