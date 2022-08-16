@@ -61,11 +61,6 @@ Steps:
 1. The normal connections for battery pack(High voltage) connections are replaced by an external battery pack of 4 12V EXIDE batteries kept in series 
 2. The controlling of the positive AIR which originally is done by a signal from the MASTER PCB(once 90% charging is done of the motor controller capacitor) was replaced by and external push button 
 
-
-
-
-
-
 ### Motor Controller connections
 1. The RS232 serial interface requires a connector from M8 to D9-S. We have custom made the connector by soldering the wires into the RS232 connector.Special drivers are also required to be installed
 2. The resolver connections are as follow
