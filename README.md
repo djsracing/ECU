@@ -14,7 +14,7 @@ ______________
 Steps:
 1. Check that the switch in branch K4(discharge relay) is closed and has been closed for **at least 15 seconds**, once it has been closed for 15 sec, open the switch 
 
-2. Changes in the N-Drive software
+2. Changes in the N-Drive software (installation guide attached in the end)
     -  Set Speed 2 at Pos-Reference to 100 
     -  Set Inom eff in settings to 20A
     -  Set Mpole in settings to 20
@@ -67,3 +67,9 @@ Steps:
 ![4](https://user-images.githubusercontent.com/93036845/184964633-d6e42546-e119-478e-9736-3f625f8b9aa1.jpeg)
 ![EMRAX-RS_V2 Resolver connector _page-0001](https://user-images.githubusercontent.com/93036845/184964892-fb79dc0f-5921-47ef-b917-cb4e5d733b67.jpg)
 ![1](https://user-images.githubusercontent.com/93036845/184670173-512488b0-ff51-4e91-8855-7a92d070d92c.jpeg)
+
+### Installing N-drive software
+
+![N-drive installation](https://user-images.githubusercontent.com/93036845/184966242-b23c8ac7-28d1-49e6-a689-4ef599dadc1b.jpg)
+[www.unitek.eu](https://www.unitek-industrie-elektronik.de/download "With a Title")
+
