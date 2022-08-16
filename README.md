@@ -7,6 +7,7 @@ ______________
 1. Phasing is the process in which the motor rotates 360 degrees in the CW direction once and we can determine the feedback offset angle
 2. 4 12V batteries in series connection were used to provide 48V(high voltage) to do the phasing process. 
 3. RFE and RUN signal were given to the motorcontroller by attaching external push buttons
+4. [First time testing videos](https://drive.google.com/drive/folders/1Byp8bGNmG__OxLTApcdZgOM1uu7ePpO7 "With a Title")
 
 ![BamocarConnections](https://user-images.githubusercontent.com/93036845/184670133-faa320b2-8469-42ef-80a9-63e0c4e41fbf.jpg)
 
@@ -36,7 +37,7 @@ Steps:
 12. Disable drive by switching X1-G  (RUN) to off (NDrive will tell you) [ Please always deactivate the inverter with the RUN signal before cutting the HV voltage. Even at 48V.The RFE does not need to be disconnected. Disconnecting the RUN input is enough.]
 
 
- [First time testing videos](https://drive.google.com/drive/folders/1Byp8bGNmG__OxLTApcdZgOM1uu7ePpO7 "With a Title")
+ 
 
 ### Issues Faced
 1. As seen in the EMRAX-RS_V2 Resolver connector pdf , the wire in the 6th pin of the Feedback plug motor is black-white but no black-white wire is there [Resolved(1)]
