@@ -50,12 +50,10 @@ Steps:
 
 ### Issues Resolved
 1. There were translation issues and the wire is supposed to be yellow-white
-<<<<<<< HEAD
 2. We have custom made the connector ourselves by soldering the resistor as well as the connections
 3. We set the Imax pk value to 3% during our successfull test and the current drawn was 12.7A(as shown in N-drive software)
-=======
-2. We set the Imax pk value to 3% during our successfull test and the current drawn was 12.7A(as shown in N-drive software)
->>>>>>> a087ea6 (init commit)
+
+
 
 ### Circuit Used
 1. The normal connections for battery pack(High voltage) connections are replaced by an external battery pack of 4 12V EXIDE batteries kept in series 
@@ -64,4 +62,7 @@ Steps:
 ### Motor Controller connections
 1. The RS232 serial interface requires a connector from M8 to D9-S. We have custom made the connector by soldering the wires into the RS232 connector.Special drivers are also required to be installed
 2. The resolver connections are as follow
->>>>>>> a087ea6 (init commit)
+
+![2](https://user-images.githubusercontent.com/93036845/184964603-7632e070-55f3-4568-84d5-dfb9c22eda25.jpeg)
+![4](https://user-images.githubusercontent.com/93036845/184964633-d6e42546-e119-478e-9736-3f625f8b9aa1.jpeg)
+![EMRAX-RS_V2 Resolver connector _page-0001](https://user-images.githubusercontent.com/93036845/184964892-fb79dc0f-5921-47ef-b917-cb4e5d733b67.jpg)
