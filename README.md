@@ -61,13 +61,9 @@ Steps:
 1. The normal connections for battery pack(High voltage) connections are replaced by an external battery pack of 4 12V EXIDE batteries kept in series 
 2. The controlling of the positive AIR which originally is done by a signal from the MASTER PCB(once 90% charging is done of the motor controller capacitor) was replaced by and external push button 
 
-![2](https://user-images.githubusercontent.com/93036845/184670253-423d9065-19a5-474b-823a-5939ba802217.jpeg)
-![3](https://user-images.githubusercontent.com/93036845/184670304-ee1a91f6-4d5c-441c-9631-65b94687c3a1.jpeg)
-![4](https://user-images.githubusercontent.com/93036845/184671708-4ea94e66-ff9d-4340-8bc3-bc77bd764aae.jpeg)
 
 
-<<<<<<< HEAD
-=======
+
 
 
 ### Motor Controller connections
