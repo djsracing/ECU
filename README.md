@@ -4,9 +4,9 @@
 
 ______________
 ##### General 
--Phasing is the process in which the motor rotates 360 degrees in the CW direction once and we can determine the feedback offset angle
--4 12V batteries in series connection were used to provide 48V(high voltage) to do the phasing process. 
--RFE and RUN signal were given to the motorcontroller by attaching external push buttons
+1. Phasing is the process in which the motor rotates 360 degrees in the CW direction once and we can determine the feedback offset angle
+2. 4 12V batteries in series connection were used to provide 48V(high voltage) to do the phasing process. 
+3. RFE and RUN signal were given to the motorcontroller by attaching external push buttons
 
 ![BamocarConnections](https://user-images.githubusercontent.com/93036845/184670133-faa320b2-8469-42ef-80a9-63e0c4e41fbf.jpg)
 
