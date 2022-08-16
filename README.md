@@ -19,7 +19,7 @@ Steps:
     -  Set Inom eff in settings to 20A
     -  Set Mpole in settings to 20
     -  Set FB pole in settings to 2
-    -  Set Mtemp to 32767(to resolve the motor temp issue value and for actual working, we get the calculation from DT of around)
+    -  Set Mtemp to 32767(to resolve the motor temp issue value, for actual working the value must be set in between 14500-15000 which refers to 90-100 degree celcius)
     -  Set Imax pk to 3%
 3. Give the RFE signal {It is mentioned in one of the emails that this can be done before applying the HV }
 4. Close the switch in K3(negative AIR)
@@ -42,7 +42,7 @@ Steps:
 1. As seen in the EMRAX-RS_V2 Resolver connector pdf , the wire in the 6th pin of the Feedback plug motor is black-white but no black-white wire is there [Resolved(1)]
 2. After completing phasing, the N-drive software is supposed to give back the offset angle of our motor, but it gives a garbage value/whatever value you manually set in it
 3. As mentioned in the initialisation guide the motor is supposed to run during phasing at an Imax pk value of 5% it should draw a current of 2-3A {mentioned in emails by edward} however at 5% it draws 21.2A {as shown in phasing videos} and motor does not run at 5%[Resolved(3)]
-4. The RS232 serial interface requires a connector from M8 to D9-S [Resolved(2)]
+
 	   
 ![1](https://user-images.githubusercontent.com/93036845/184670173-512488b0-ff51-4e91-8855-7a92d070d92c.jpeg)
 
@@ -50,16 +50,27 @@ Steps:
 
 ### Issues Resolved
 1. There were translation issues and the wire is supposed to be yellow-white
+<<<<<<< HEAD
 2. We have custom made the connector ourselves by soldering the resistor as well as the connections
 3. We set the Imax pk value to 3% during our successfull test and the current drawn was 12.7A(as shown in N-drive software)
+=======
+2. We set the Imax pk value to 3% during our successfull test and the current drawn was 12.7A(as shown in N-drive software)
+>>>>>>> a087ea6 (init commit)
 
 ### Circuit Used
-1. The normal connections for battery pack(High voltage) connections are replaced by the 4 12V EXIDE batteries 
+1. The normal connections for battery pack(High voltage) connections are replaced by an external battery pack of 4 12V EXIDE batteries kept in series 
 2. The controlling of the positive AIR which originally is done by a signal from the MASTER PCB(once 90% charging is done of the motor controller capacitor) was replaced by and external push button 
-3. The RS232 connector needs special drivers 
 
 ![2](https://user-images.githubusercontent.com/93036845/184670253-423d9065-19a5-474b-823a-5939ba802217.jpeg)
 ![3](https://user-images.githubusercontent.com/93036845/184670304-ee1a91f6-4d5c-441c-9631-65b94687c3a1.jpeg)
 ![4](https://user-images.githubusercontent.com/93036845/184671708-4ea94e66-ff9d-4340-8bc3-bc77bd764aae.jpeg)
 
 
+<<<<<<< HEAD
+=======
+
+
+### Motor Controller connections
+1. The RS232 serial interface requires a connector from M8 to D9-S. We have custom made the connector by soldering the wires into the RS232 connector.Special drivers are also required to be installed
+2. The resolver connections are as follow
+>>>>>>> a087ea6 (init commit)
