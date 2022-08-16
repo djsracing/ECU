@@ -27,7 +27,7 @@ Steps:
 6. Using the N-Drive Software determine when the DC-BUS is at least 90% of the total applied voltage (Check NDrive->Extra->Vdc-Bus (0xeb).
 7. Once the DC-BUS voltage is **at least 90%** , close the switch in branch K1(Positive AIR) [It was not charged exactly to 90% but was actually showing around 50-51V even though the supply was only 48V]
 8. Once the switch in branch K1(positive AIR) has been closed, open the switch in branch K2(Precharge)
-9. **High voltage is now being supplied to the motor controller and the system is considered live and should be handled carefully and cautiously 
+9. **High voltage is now being supplied to the motor controller and the system is considered live and should be handled carefully and cautiously**
 10.  Changes in N-Drive software
      - Auto ~> Special functions ~> select [fn4] Phasing-Rotating
      - Press START (**The next step must be done before 10 s are over) 
