@@ -199,7 +199,7 @@ int main(){
 					PORTD&=~(1<<motorcontroller);
 					PORTD&=~(1<<RTD_LED);
 					PORTD|=(1<<apps_led);
-					TCCR1B&=~((1<<CS10)|(1<<CS12)|(1<<CS11));
+					TCCR1B&=~((1<<CS10)|(1<<CS12));
 					TCNT1=0;
 					rtdmode=0;
 				}
