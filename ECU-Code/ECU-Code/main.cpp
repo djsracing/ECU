@@ -1,8 +1,8 @@
 /*
- * ECU.cpp
+ * ECU-Code.cpp
  *
- * Created: 24-08-2022 12:49:33
- * Author : User
+ * Created: 08-08-2022 06:03:35 PM
+ * Author : krish
  */ 
 
 #include <avr/io.h>
@@ -34,7 +34,7 @@ int rtdmode = 0,brakefault = 0,flag1 = 0,appsfault = 0;
 
 
 //Thresholds
-#define lt1 512     //2.5V  //Changed to 2.5 as practical values were around 2.6(max)
+#define lt1 490     //2.4V
 #define lt2 198.66  //0.97V
 #define ht1 1024	//4.8V
 #define ht2 409.6   //2V
@@ -96,7 +96,7 @@ int main(){
 			}
 			PORTD &= ~(1<<testled);
 			PORTD &= ~(1<<buzzer);
-			TCCR1B &=~((1<<CS10)|(1<<CS12));
+			TCCR1B &=~((1<<CS10)|(1<<CS11)|(1<<CS12));
 			TCNT1 =0;
 			rtdmode = 1;
 		}
@@ -126,7 +126,7 @@ int main(){
 			}
 			//--------------------------------------------BRAKE FAULT------------------------------------------------------------------
 			
-			if(a > 0.25 && bps>=bps_th && brakefault==0 && rtdmode==1){ 
+			if(a > 0.25 && bps>=bps_th && brakefault==0 && rtdmode==1){
 				PORTD|=(1<<bspd_led);
 				PORTD&= ~(1<<RTD_LED);
 				TCNT1=0;
@@ -138,17 +138,17 @@ int main(){
 				apps1=read_adc(apps1_pin);
 				a = ((float)(apps1-lt1)/(float)(ht1-lt1));
 				//change to 500
-				if(TCNT1<2000*16 && ((a<0.25) || bps<bps_th)){ 
+				if(TCNT1<2000*16 && (a<0.25 || bps<bps_th)){
 					PORTD |= (1<<RTD_LED);
 					PORTD &=~(1<<bspd_led);
-					TCCR1B &=~((1<<CS10)|(1<<CS12));
+					TCCR1B &=~((1<<CS10)|(1<<CS11)|(1<<CS12));
 					TCNT1 =0;
 					brakefault = 0;
 				}
 				if(TCNT1>2000*16){
 					PORTD &=~(1<<motorcontroller);
 					OCR0=0;
-					TCCR1B &=~((1<<CS10)|(1<<CS12));
+					TCCR1B &=~((1<<CS10)|(1<<CS11)|(1<<CS12));
 					TCNT1 =0;
 					flag1=1;
 					brakefault=0;
@@ -158,11 +158,11 @@ int main(){
 				apps1=read_adc(apps1_pin);
 				PORTD&= ~(1<<RTD_LED);
 				a = ((float)(apps1-lt1)/(float)(ht1-lt1));
-				if(a>0.05){ 
+				if(a>0.05){
 					OCR0=0;
 					PORTD&=~(1<<motorcontroller);
 				}
-				else if(a<0.05){ 
+				else if(a<0.05){
 					OCR0=mapping(apps1,lt1,ht1,0,255);
 					PORTD|=(1<<motorcontroller);
 					PORTD |= (1<<RTD_LED);
@@ -173,9 +173,9 @@ int main(){
 			
 			//-------------------------------------------------------APPS FAULT-----------------------------------------------------------
 			
-			if(mod(a-b)>0.5 && rtdmode==1){ //changed to 0.5 for testing
-				TCNT1= 0;
-				TCCR1B |=(1<<CS10)|(1<<CS12);
+			if(mod(a-b)>0.1 && rtdmode==1){
+				/*TCNT1= 0;
+				TCCR1B |=(1<<CS10)|(1<<CS12)|(1<<CS11);*/
 				appsfault=1;
 			}
 			while(appsfault==1){//change tcnt to make delay to 100m
@@ -185,8 +185,10 @@ int main(){
 				PORTD |= (1<<apps_led);
 				a = ((float)(apps1-lt1)/(float)(ht1-lt1));
 				b = ((float)(apps2-lt2)/(float)(ht2-lt2));
-				if(TCNT1 <=2000*16 && (mod(a-b)<0.5)){ //changed to 0.5 for testing
-					TCCR1B&=~(1<<CS10)|(1<<CS12);
+				TCNT1= 0;
+				TCCR1B |=(1<<CS10)|(1<<CS12)|(1<<CS11);
+				if(TCNT1 <=2000*16 && (mod(a-b)<10)){
+					TCCR1B&=~((1<<CS10)|(1<<CS12)|(1<<CS11));
 					TCNT1=0;
 					PORTD &= ~(1<<apps_led);
 					PORTD &= ~(1<<testled);
@@ -197,7 +199,7 @@ int main(){
 					PORTD&=~(1<<motorcontroller);
 					PORTD&=~(1<<RTD_LED);
 					PORTD|=(1<<apps_led);
-					TCCR1B&=~((1<<CS10)|(1<<CS12));
+					TCCR1B&=~((1<<CS10)|(1<<CS12)|(1<<CS11));
 					TCNT1=0;
 					rtdmode=0;
 				}
@@ -205,6 +207,7 @@ int main(){
 		}
 	}
 }
+
 
 
 
