@@ -35,10 +35,10 @@ int rtdmode = 0,brakefault = 0,flag1 = 0,appsfault = 0;
 
 //Thresholds
 #define lt1 512     //2.5V  //Changed to 2.5 as practical values were around 2.6(max)
-#define lt2 198.66  //0.97V
-#define ht1 1024	//4.8V
-#define ht2 409.6   //2V
-#define bps_th 256
+#define lt2 204  //0.97V
+#define ht1 1023	//4.8V
+#define ht2 410  //2V
+#define bps_th 200
 
 
 uint16_t adc_value;            //Variable used to store the value read from the ADC
@@ -114,12 +114,9 @@ int main(){
 			a = ((float)(apps1-lt1)/(float)(ht1-lt1));
 			b = ((float)(apps2-lt2)/(float)(ht2-lt2));
 			//rtdb = read_adc(RTDB_pin);
-			if(apps1<=512){
-				OCR0 = 0;
-			}
-			else{
-				OCR0=mapping(apps1,lt1,ht1,0,255);
-			}
+			
+		   OCR0=mapping(apps1,lt1,ht1,0,255);
+			
 			
 			while(SD < 512 ){
 				SD=read_adc(SD_pin);
@@ -132,7 +129,7 @@ int main(){
 			
 			if(a > 0.25 && bps>=bps_th && brakefault==0 && rtdmode==1){ 
 				PORTD|=(1<<bspd_led);
-				PORTD&= ~(1<<RTD_LED);
+				//PORTD&= ~(1<<RTD_LED);
 				TCNT1=0;
 				TCCR1B|=(1<<CS10)|(1<<CS12);
 				brakefault=1;
@@ -155,6 +152,7 @@ int main(){
 					OCR0=0;
 					TCCR1B &=~((1<<CS10)|(1<<CS12));
 					TCNT1 =0;
+					PORTD&= ~(1<<RTD_LED);
 					flag1=1;
 					brakefault=0;
 				}
@@ -202,7 +200,7 @@ int main(){
 				if(TCNT1>2000*16){
 					OCR0=0;
 					PORTD&=~ (1<<motorcontroller);
-					PORTD&=~(1<<RTD_LED);
+					PORTD&=~(1<<RTD_LED); 
 					PORTD|=(1<<apps_led);
 					TCCR1B&=~((1<<CS10)|(1<<CS12));
 					TCNT1=0;
