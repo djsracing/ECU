@@ -13,7 +13,7 @@
 #include <stdlib.h>
 
 //Flags
-int rtdmode = 0,brakefault = 0,flag1 = 0,appsfault = 0;
+int rtdmode = 0,brakefault = 0,flag1 = 0,appsfault = 0,cs_state = 0;
 
 //PORTD
 #define buzzer 2
@@ -25,6 +25,7 @@ int rtdmode = 0,brakefault = 0,flag1 = 0,appsfault = 0;
 
 
 //PORTA
+#define CS_pin 0
 #define apps1_pin 1
 #define apps2_pin 2
 #define RTDB_pin 3
@@ -81,7 +82,7 @@ int main(){
 	adc_init();
 	PWM_init();
 	float apps1,apps2,bps,a,b;
-	int rtdb,bps_scs,SD;
+	int rtdb,bps_scs,SD,CS;
 	while(1)
 	{
 		rtdb = read_adc(RTDB_pin);
@@ -126,8 +127,15 @@ int main(){
 				rtdmode=0;
 			}
 			//--------------------------------------------BRAKE FAULT------------------------------------------------------------------
-			
-			if(a > 0.25 && bps>=bps_th && brakefault==0 && rtdmode==1){ 
+			CS = read_adc(CS_pin);
+			if(CS >= 512){
+				cs_state = 1;//>5kW 
+				PORTD |= (1<<3)|(1<<4)|(1<<5);//for testing purpose only, remove later
+			}else{
+				cs_state =0;//<5kW
+				PORTD &= ~((1<<3)|(1<<4)|(1<<5));
+			}
+			if(cs_state == 1 && bps>=bps_th && brakefault==0 && rtdmode==1){ 
 				PORTD|=(1<<bspd_led);
 				//PORTD&= ~(1<<RTD_LED);
 				TCNT1=0;
@@ -137,10 +145,11 @@ int main(){
 			while(brakefault==1){
 				bps=read_adc(BPS_pin);
 				apps1=read_adc(apps1_pin);
+				CS = read_adc(CS_pin);
 				a = ((float)(apps1-lt1)/(float)(ht1-lt1));
 				b = ((float)(apps2-lt2)/(float)(ht2-lt2));
 				//change to 500
-				if(TCNT1<2000*16 && ((a<0.25) || bps<bps_th)){ 
+				if(TCNT1<2000*16 && ((CS<512) || bps<bps_th)){ 
 					PORTD |= (1<<RTD_LED);
 					PORTD &=~(1<<bspd_led);
 					TCCR1B &=~((1<<CS10)|(1<<CS12));
@@ -156,7 +165,7 @@ int main(){
 					flag1=1;
 					brakefault=0;
 				}
-			}//to make it start up again, less than 5%
+			}//to make it start up again,apps has to be less than 5%
 			while(flag1==1){
 				apps1=read_adc(apps1_pin);
 				apps2=read_adc(apps2_pin);
